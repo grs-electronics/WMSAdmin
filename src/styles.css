@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+.main-container{
+  margin-top:40px;
+}
+
+.modal-content, .modal-dialog{
+  width:900px!important;
+  left: -10%!important;
+}
+
+.modal-tarea{
+  width:500px!important;
+  left: -10%!important;
+}
+
+
+
+/* Important part */
+.modal-dialog{
+  overflow-y: initial !important;
+
+}
+.modal-body{
+  height: 500px;
+  overflow-y: auto;
+}
+
+.col-centered{
+    margin: 0 auto;
+    float: none;
+}

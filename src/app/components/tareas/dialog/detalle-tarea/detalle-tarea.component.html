@@ -1,0 +1,47 @@
+<div class="modal-dialog"  role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title"><i class="fa fa-tasks"></i> Detalle de Tarea <small> | asignada</small></h5>
+      <button type="button" class="close" (click)="close()" >&times;</button>
+    </div>
+    <div class="modal-body text-center">
+      <div class="card text-center">
+        <div class="card-header">Información General</div>
+        <div class="card-block">
+          <ul class="list-group">
+            <li class="list-group-item"><strong>No.</strong> <code>{{tarea.documento.DocNum}}</code></li>
+            <li class="list-group-item"><strong>Cliente,</strong> <code>{{tarea.documento.CardName}}</code></li>
+            <li class="list-group-item"><strong>Dirección de entrega,</strong> <code>{{tarea.documento.Direccion}}</code></li>
+          </ul>
+        </div>
+      </div>
+      <div class="card text-center">
+        <div class="card-header">Artículos Asignados</div>
+        <div class="card-block">
+          <ul class="list-group" *ngFor="let item of tarea.detalleTarea">
+            <li class="list-group-item">{{item.Articulo}} ----> <span class="badge badge-info"> {{item.Solucion}}/{{item.Asignado}}</span></li>
+          </ul>
+        </div>
+      </div>
+      <hr>
+      <h5>Informaciónd de Picking</h5>
+      <hr>
+      <div class="card text-center">
+        <div class="card-block">
+          <ul class="list-group text-center"  *ngFor="let item of tarea.solucionTarea">
+            <li class="list-group-item">
+                <h6>{{item.Articulo}} - {{item.numeroDeSerie}}  - <span class="badge badge-info" align="right">Bodega {{item.bodega}}</span></h6>
+            </li>
+          </ul>
+          <div class="alert alert-success" role="alert" *ngIf="tarea.solucionTarea.length===0">
+            <strong >Picking!</strong> aún no hay información de productos escaneados.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="confirm()">OK</button>
+      <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+    </div>
+  </div>
+</div>

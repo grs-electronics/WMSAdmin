@@ -1,0 +1,60 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">{{title || 'Confirm'}}</h5>
+      <button type="button" class="close" (click)="close()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body card-header text-center">
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title">Información de Tarea</h4>
+          <hr>
+          <h1><i class="fa fa-user-circle-o" aria-hidden="true"></i></h1>
+          <h6 class="card-subtitle mb-2 text-muted"><small>Asignando tarea a usuario,</small> {{operario.name}}</h6>
+          <p class="card-text">Listado de trabajo seleccionado disponible para asignación.</p>
+          <p>
+            Tiempo Estimado <select class="form-control col-centered input-small col-sm-5" [(ngModel)]="tiempo">
+              <option>15</option>
+              <option>30</option>
+              <option>45</option>
+              <option>60</option>
+              <option>90</option>
+              <option>120</option>
+              <option>150</option>
+              <option>180</option>
+            </select>
+          </p>
+          <p>Prioridad</p>
+          <div class="btn-group">
+            <label class="btn btn-warning" btnRadio="Urgente" [(ngModel)]="prioridad" name="prioridad" ngDefaultControl>Urgente</label>
+            <label class="btn btn-danger" btnRadio="Alta"  [(ngModel)]="prioridad" name="prioridad" ngDefaultControl>Alta</label>
+            <label class="btn btn-primary" btnRadio="Media" [(ngModel)]="prioridad" name="prioridad" ngDefaultControl>Media</label>
+            <label class="btn btn-info" btnRadio="Baja"  [(ngModel)]="prioridad" name="prioridad" ngDefaultControl>Baja</label>
+          </div>
+        </div>
+        {{prioridad}}
+        <hr>
+        <div class="list-group-item-heading list-group-item-info">
+          Carga de Trabajo Seleccionada
+        </div>
+        <ul class="list-group list-group-flush" *ngFor="let item of detalle">
+          <li class="list-group-item list-group-item-action justify-content-between">
+            <h6>DocNum. {{item.DocNum}}</h6> -
+            <span class="badge badge-primary"> ETA. {{item.ETA}}</span> -
+            {{item.CardName}} -
+            <span class="badge badge-info badge-pill">{{item.Articulo}}</span> -
+            <span class="badge badge-default badge-pill">{{item.Cantidad | number:'.0'}}</span>
+            <button (click)="eliminarTrabajo(item)" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="confirm()">Asignar Trabajo</button>
+      <button type="button" class="btn btn-secondary" (click)="close()" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>

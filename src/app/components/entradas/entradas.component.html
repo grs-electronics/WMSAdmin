@@ -1,0 +1,45 @@
+<h3>
+  Listado de Entradas Pendientes
+</h3>
+<hr>
+<div class="row">
+  <div class="col-md-4">
+    <select class="form-control" [(ngModel)]="operario">
+      <option *ngFor="let item of listaOperarios" [ngValue]="item"> {{item.name}}</option>
+    </select>
+  </div>
+  <div class="col-md-4">
+    <button class="btn btn-sm btn-warning" (click)="mostrarTareas()"><i class="fa fa-tasks"  aria-hidden="true"></i> Trabajo</button>
+  </div>
+</div>
+<hr>
+<form>
+<table class="table table-bordered table-hover table-responsive">
+  <thead>
+    <tr>
+      <th><input class="form-control"  type="number" [(ngModel)]="filtro.DocNum"  name="DocNum" placeholder="#Documento"> </th>
+      <th><input class="form-control" type="text"  [(ngModel)]="filtro.ETA" name="ETA" placeholder="YYYY/MM/DD" ></th>
+      <th><input class="form-control" type="text" [(ngModel)]="filtro.CardName" name="CardName" placeholder="Proveedor"></th>
+      <th><input class="form-control" type="text" [(ngModel)]="filtro.Articulo" name="Articulo" placeholder="Articulo"></th>
+      <th>Cantidad</th>
+      <th>#Factura</th>
+      <th>Comentarios</th>
+      <th>--</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of listaEntradas | TableFilter:filtro">
+      <td>{{item.DocNum}}</td>
+      <td>{{item.ETA}}</td>
+      <td>{{item.CardName}}</td>
+      <td>{{item.Articulo}}</td>
+      <td><span class="badge badge-info">{{item.Cantidad|number:'.0'}}</span></td>
+      <td>{{item.NumFactura}}</td>
+      <td>{{item.Comentarios}}</td>
+      <td>
+        <button  class="btn btn-primary btn-sm" #control (click)="agregarALista(item,control)"><i class="fa fa-check" aria-hidden="true"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</form>

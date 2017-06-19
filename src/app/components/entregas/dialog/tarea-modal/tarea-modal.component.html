@@ -1,0 +1,93 @@
+<div class="modal-dialog"  role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title"><i class="fa fa-tasks"></i> Listado de Tareas <small>para asignación</small></h5>
+      <button type="button" class="close" (click)="close()" >&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="card text-center">
+        <div class="card-header">
+          Información de Transporte
+        </div>
+        <div class="card-block">
+          <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-id-card-o" aria-hidden="true"></i></span>
+            <input [(ngModel)]="transporte.dpi" class="form-control" type="text" placeholder="DPI" aria-describedby="basic-addon1" required>
+          </div>
+          <br>
+          <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-male" aria-hidden="true"></i></span>
+            <input [(ngModel)]="transporte.nombre" class="form-control" type="text" placeholder="Nombre" aria-describedby="basic-addon1" required>
+
+          </div>
+          <br>
+          <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-truck" aria-hidden="true"></i></span>
+            <input [(ngModel)]="transporte.placas" class="form-control" type="text" placeholder="Placas" aria-describedby="basic-addon1" required>
+          </div>
+
+        </div>
+      </div>
+      <hr>
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Documento</th>
+            <th>Cantidad/Artículos</th>
+            <th>Tiempo/min.</th>
+            <th>Prioridad</th>
+            <th>--</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of this._tareaService.listar();let i =index;">
+            <td>{{i+1}}</td>
+            <td>{{item.documento.DocNum}}</td>
+            <td style="text-align: center;width: 300px;">
+              <p>
+                <button class="btn btn-sm btn-default"  (click)="collapse(elemento);this.isCollapse=!this.isCollapse">Detalle</button>
+              </p>
+              <div class="collapse"  #elemento id="collapseExample">
+                <div class="card">
+                  <ul class="list-group list-group-flush" *ngFor="let detalle of item.detalleTarea">
+                    <li class="list-group-item" style="word-wrap: break-word; width: 200px;font-size: 10px">{{detalle.Articulo}} / {{ detalle.Asignado | number:'.0'}}</li>
+                  </ul>
+                </div>
+              </div>
+            </td>
+            <td style="text-align: center">
+              <select class="form-control input-small" [(ngModel)]="item.duracion">
+                <option>15</option>
+                <option>30</option>
+                <option>45</option>
+                <option>60</option>
+                <option>90</option>
+                <option>120</option>
+                <option>150</option>
+                <option>180</option>
+              </select>
+              <pre>{{item.duracion || 0}} min.</pre>
+            </td>
+            <td style="text-align: center">
+              <div class="btn-group">
+                <label class="btn btn-warning" btnRadio="Urgente" [(ngModel)]="item.prioridad" name="prioridad" ngDefaultControl>Urgente</label>
+                <label class="btn btn-danger" btnRadio="Alta"  [(ngModel)]="item.prioridad" name="prioridad" ngDefaultControl>Alta</label>
+                <label class="btn btn-primary" btnRadio="Media" [(ngModel)]="item.prioridad" name="prioridad" ngDefaultControl>Media</label>
+                <label class="btn btn-info" btnRadio="Baja"  [(ngModel)]="item.prioridad" name="prioridad" ngDefaultControl>Baja</label>
+              </div>
+              <pre>{{item.prioridad}}</pre>
+            </td>
+            <td>
+              <button class="btn btn-sm btn-danger" (click)="this._tareaService.eliminar(item)"> <i class="fa fa-trash"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="confirm()">OK</button>
+      <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<h1>
+  Listado de Tareas
+</h1>
+<small>Exportar Información</small>
+<hr>
+<div class="row">
+  <div class="col-md-2">
+    <button class="btn btn-success btn-sm right" (click)="exportsData()" ><i class="fa fa-file-excel-o" aria-hidden="true"></i> Reporte Excel</button>
+  </div>
+  <div class="col-md-2">
+    <button class="btn btn-danger btn-sm right" (click)="exportPDF()" ><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Reporte PDF</button>
+  </div>
+</div>
+<hr>
+<form>
+<table class="table table-bordered table-hover table-responsive">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Tipo</th>
+      <th>Encargado</th>
+      <th>Transporte</th>
+      <th>F/Asignada</th>
+      <th>Estado</th>
+      <th>Prioridad</th>
+      <th>Duración</th>
+      <th>---</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of listaTareas;let i=index  ">
+      <td>{{i+1}}</td>
+      <td>{{item.tipo}}</td>
+      <td>{{item.operario.name}}</td>
+      <td>{{item.transporte.nombre}}/{{item.transporte.placas}}</td>
+      <td>{{item.fechaAsignacion}}</td>
+      <td>{{item.estado}}</td>
+      <td>{{item.prioridad}}</td>
+      <td>{{item.duracion}} min.</td>
+      <td>
+        <button (click)="detalleTarea(item)" class="btn btn-primary btn-sm"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
+        <button (click)="eliminarTarea(item)" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</form>

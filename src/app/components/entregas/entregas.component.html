@@ -1,0 +1,50 @@
+<h1>
+  Listado de entregas abiertas
+</h1>
+<hr>
+<div class="row">
+  <div class="col-md-4">
+    <select class="form-control" [(ngModel)]="operario" >
+      <option *ngFor="let item of listaOperarios" [ngValue]="item"> {{item.name}}</option>
+    </select>
+  </div>
+  <div class="col-md-4">
+    <button class="btn btn-success btn-sm" (click)="listaTareas()" *ngIf="operario.name"><i class="fa fa-tasks"  aria-hidden="true"></i> Tareas</button>
+  </div>
+</div>
+<hr>
+<form>
+  <table class="table table-bordered table-hover table-responsive">
+    <thead class="thead-default">
+      <tr>
+        <th><input class="form-control" type="text" name="Bodega" [(ngModel)]="filtro.Bodega" placeholder="Bodega"></th>
+        <th><input  class="form-control" type="number" name="DocNum" [(ngModel)]="filtro.DocNum"  placeholder="# Pedido"></th>
+        <th><input  class="form-control input-sm" type="text" name="CardName" [(ngModel)]="filtro.CardName" placeholder="Cliente"></th>
+        <th><input  class="form-control input-sm" type="text" name="Direccion"  [(ngModel)]="filtro.Direccion" placeholder="Dirección de Entrega" ></th>
+        <th><input  class="form-control input-sm" type="text" name="Ruta" [(ngModel)]="filtro.Ruta" placeholder="Ruta"></th>
+        <th><input  class="form-control input-sm" type="text" name="Zona_Entrega" [(ngModel)]="filtro.Zona_Entrega" placeholder="Zona Entrega" ></th>
+        <th><input class="form-control input-sm" type="text" name="Fecha_Pedido" [(ngModel)]="filtro.Fecha_Pedido" placeholder="Fecha Pedido"></th>
+        <th>Comentarios</th>
+        <th>Cant/Despacho</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data  | TableFilter:filtro">
+        <td>{{item.Bodega}}</td>
+        <td>{{item.DocNum}}</td>
+        <td>{{item.CardName}}</td>
+        <td>{{item.Direccion}}</td>
+        <td>{{item.Ruta}}</td>
+        <td>{{item.Zona_Entrega}}</td>
+        <td>{{item.Fecha_Pedido }}</td>
+        <td>{{item.Comentarios}}</td>
+        <td>
+            Solicitado: {{item.Quantity | number:.0}}
+            Despachado: {{item.Entregado | number:.0}}
+            Pendiente: {{item.Pendiente | number:.0}}
+        </td>
+        <td><button class="btn btn-sm btn-primary" (click)="obtenerDetalle(item)"><i class="fa fa-newspaper-o" aria-hidden="true"></i></button></td>
+      </tr>
+    </tbody>
+  </table>
+</form>
