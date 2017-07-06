@@ -59,10 +59,10 @@ export class TareaComponent implements OnInit {
       if(this.listaTareas[i].estado==='Finalizada'){
         for(let index in this.listaTareas[i].solucionTarea){
             this.data=new Object();
-            this.data.Cliente=this.listaTareas[i].documento.CardName;
-            this.data.Producto=this.listaTareas[i].solucionTarea[index].Articulo;
+            this.data.Cliente=this.listaTareas[i].documento.cardName;
+            this.data.Producto=this.listaTareas[i].solucionTarea[index].articulo;
             this.data.Codigo=this.listaTareas[i].solucionTarea[index].numeroDeSerie;
-            this.data.DocNum=this.listaTareas[i].documento.DocNum;
+            this.data.DocNum=this.listaTareas[i].documento.docNum;
             this.data.FechaAsignacion=this.listaTareas[i].fechaAsignacion;
             this.data.Encargado=this.listaTareas[i].operario.name;
             this.data.Transporte=this.listaTareas[i].transporte.nombre;
@@ -91,10 +91,10 @@ export class TareaComponent implements OnInit {
       if(this.listaTareas[i].estado==='Finalizada'){
         for(let index in this.listaTareas[i].solucionTarea){
             this.data=new Object();
-            this.data.Cliente=this.listaTareas[i].documento.CardName;
-            this.data.Producto=this.listaTareas[i].solucionTarea[index].Articulo;
+            this.data.Cliente=this.listaTareas[i].documento.cardName;
+            this.data.Producto=this.listaTareas[i].solucionTarea[index].articulo;
             this.data.Codigo=this.listaTareas[i].solucionTarea[index].numeroDeSerie;
-            this.data.DocNum=this.listaTareas[i].documento.DocNum;
+            this.data.DocNum=this.listaTareas[i].documento.docNum;
             this.data.FechaAsignacion=this.listaTareas[i].fechaAsignacion;
             this.data.Encargado=this.listaTareas[i].operario.name;
             this.data.Transporte=this.listaTareas[i].transporte.nombre;
@@ -107,15 +107,15 @@ export class TareaComponent implements OnInit {
       }
     }
     let col=[
-      {title:"Cliente",dataKey:"Cliente"},
-      {title:"Producto",dataKey:"Producto"},
-      {title:"Código",dataKey:"Codigo"},
-      {title:"DocNum",dataKey:"DocNum"},
-      {title:"FechaAsignacion",dataKey:"FechaAsignacion"},
-      {title:"Encargado",dataKey:"Encargado"},
-      {title:"DPI",dataKey:"DPI"},
-      {title:"Transporte",dataKey:"Transporte"},
-      {title:"Placa",dataKey:"Placa"},{title:"Bodega",dataKey:"Bodega"}];
+      {title:"Cliente",dataKey:"cliente"},
+      {title:"Producto",dataKey:"producto"},
+      {title:"Código",dataKey:"codigo"},
+      {title:"DocNum",dataKey:"docNum"},
+      {title:"FechaAsignacion",dataKey:"fechaAsignacion"},
+      {title:"Encargado",dataKey:"encargado"},
+      {title:"DPI",dataKey:"dPI"},
+      {title:"Transporte",dataKey:"transporte"},
+      {title:"Placa",dataKey:"placa"},{title:"Bodega",dataKey:"bodega"}];
     let doc = new jsPDF('l', 'mm', [400, 210]);
     console.log(doc);
     doc.autoTable(col,this.reporte,{

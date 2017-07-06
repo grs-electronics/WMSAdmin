@@ -1,23 +1,23 @@
 import {TipoDocumento} from "./tipo-documento";
 
 export class Entrega extends TipoDocumento{
-  Asignado:string;
-  Bodega:string;
-  DocEntry:string;
-  DocNum:string;
-  Quantity:string;
-  Entregado:string;
-  Pendiente:string;
-  CardName:string;
-  Fecha_Pedido:string;
-  Fecha_Compromiso:string;
-  DiasVencidos:string;
-  Comentarios:string;
-  Ruta:string;
-  Zona_Entrega:string;
-  Tramo_Directo:string;
-  KM_Extra:string;
-  Direccion:string;
+  asignado:string;
+  bodega:string;
+  docEntry:string;
+  docNum:string;
+  quantity:string;
+  entregado:string;
+  pendiente:string;
+  cardName:string;
+  fecha_Pedido:string;
+  fecha_Compromiso:string;
+  diasVencidos:string;
+  comentarios:string;
+  ruta:string;
+  zona_Entrega:string;
+  tramo_Directo:string;
+  kM_Extra:string;
+  direccion:string;
 
   constructor(){
     super('Entrega');

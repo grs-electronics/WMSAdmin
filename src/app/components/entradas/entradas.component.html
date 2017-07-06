@@ -1,5 +1,5 @@
 <h3>
-  Listado de Entradas Pendientes
+  ORDENES DE COMPRA <small> ABIERTAS</small>
 </h3>
 <hr>
 <div class="row">
@@ -17,10 +17,11 @@
 <table class="table table-bordered table-hover table-responsive">
   <thead>
     <tr>
-      <th><input class="form-control"  type="number" [(ngModel)]="filtro.DocNum"  name="DocNum" placeholder="#Documento"> </th>
-      <th><input class="form-control" type="text"  [(ngModel)]="filtro.ETA" name="ETA" placeholder="YYYY/MM/DD" ></th>
-      <th><input class="form-control" type="text" [(ngModel)]="filtro.CardName" name="CardName" placeholder="Proveedor"></th>
-      <th><input class="form-control" type="text" [(ngModel)]="filtro.Articulo" name="Articulo" placeholder="Articulo"></th>
+      <th><input class="form-control"  type="number" [(ngModel)]="filtro.docNum"  name="docNum" placeholder="#Documento"> </th>
+      <th><input class="form-control" type="text" [(ngModel)]="filtro.contenedor" name="contenedor" placeholder="contenedor"></th>
+      <th><input class="form-control" type="text" [(ngModel)]="filtro.articulo" name="articulo" placeholder="articulo"></th>
+      <th><input class="form-control" type="text"  [(ngModel)]="filtro.eTA" name="eTA" placeholder="YYYY/MM/DD" ></th>
+      <th>Bodega</th>
       <th>Cantidad</th>
       <th>#Factura</th>
       <th>Comentarios</th>
@@ -29,13 +30,14 @@
   </thead>
   <tbody>
     <tr *ngFor="let item of listaEntradas | TableFilter:filtro">
-      <td>{{item.DocNum}}</td>
-      <td>{{item.ETA}}</td>
-      <td>{{item.CardName}}</td>
-      <td>{{item.Articulo}}</td>
-      <td><span class="badge badge-info">{{item.Cantidad|number:'.0'}}</span></td>
-      <td>{{item.NumFactura}}</td>
-      <td>{{item.Comentarios}}</td>
+      <td>{{item.docNum}}</td>
+      <td>{{item.contenedor}}</td>
+      <td>{{item.articulo}}</td>
+      <td>{{item.eTA}}</td>
+      <td>{{item.bodega}}</td>
+      <td><span class="badge badge-info">{{item.cantidad|number:'.0'}}</span></td>
+      <td>{{item.numFactura}}</td>
+      <td>{{item.comentarios}}</td>
       <td>
         <button  class="btn btn-primary btn-sm" #control (click)="agregarALista(item,control)"><i class="fa fa-check" aria-hidden="true"></i></button>
       </td>

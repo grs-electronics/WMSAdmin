@@ -3,14 +3,14 @@
  */
 export class TipoDocumento{
   nombre:string;
-  Entrega?:string;
-  CardName?:string;
-  DocStatus?:string;
-  Canceled?:string;
-  DocNum?:string;
-  DocEntry?:string;
-  Entregado?:string;
-  Quantity?:string;
-  Direccion?:string;
+  entrega?:string;
+  cardName?:string;
+  docStatus?:string;
+  canceled?:string;
+  docNum?:string;
+  docEntry?:string;
+  entregado?:string;
+  quantity?:string;
+  direccion?:string;
   constructor(nombre:string){this.nombre=nombre;}
 }

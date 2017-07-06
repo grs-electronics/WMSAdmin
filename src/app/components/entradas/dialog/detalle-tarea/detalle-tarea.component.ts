@@ -23,20 +23,23 @@ export class DetalleTareaComponent extends DialogComponent<ConfirmModel, boolean
     super(dialogService);
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {  }
+
   cancel(){
     this.close();
   }
 
   confirm() {
-    this.tarea=new Tarea();
-    this.tarea.detalleTarea=this.detalle;
-    this.tarea.prioridad=this.prioridad;
-    this.tarea.duracion=this.tiempo;
-    this.tarea.operario=this.operario;
-    this.tarea.tipo='Entrada';
-    this._tareaService.agregar(this.tarea).subscribe(data=>console.log(data));
+    for( let index in this.detalle ){
+      this.tarea=new Tarea();
+      this.tarea.detalleTarea=new Array<DetalleTarea>();
+      this.tarea.detalleTarea.push(this.detalle[index]);
+      this.tarea.prioridad=this.prioridad;
+      this.tarea.duracion=this.tiempo;
+      this.tarea.operario=this.operario;
+      this.tarea.tipo='Entrada';
+      this._tareaService.agregar(this.tarea).subscribe(data=>console.log(data));
+    }
     this.close();
   }
 

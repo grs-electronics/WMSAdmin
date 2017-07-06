@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+.container {
+    width: 90%!important;
+}
+
 .main-container{
   margin-top:40px;
 }

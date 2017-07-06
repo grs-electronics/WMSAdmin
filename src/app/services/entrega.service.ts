@@ -14,6 +14,6 @@ export class EntregaService {
     return this._http.get('/api/entrega').map((res:Response)=>res.json());
   }
   detalleEntrega(entrega:Entrega){
-    return this._http.get('/api/entregadetalle?DocEntry='+entrega.DocNum).map((res:Response)=>res.json());
+    return this._http.get('/api/entregadetalle?DocEntry='+entrega.docNum).map((res:Response)=>res.json());
   }
 }

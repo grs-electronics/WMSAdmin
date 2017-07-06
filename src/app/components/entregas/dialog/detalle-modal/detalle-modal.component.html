@@ -11,9 +11,9 @@
           <div class="card-header">Información General</div>
           <div class="card-block">
             <ul class="list-group">
-              <li class="list-group-item"> No. <code>{{entrega.DocNum}}</code></li>
-              <li class="list-group-item">Cliente, <code>{{entrega.CardName}}</code></li>
-              <li class="list-group-item">Dirección de entrega, <code>{{entrega.Direccion}}</code></li>
+              <li class="list-group-item"> No. <code>{{entrega.docNum}}</code></li>
+              <li class="list-group-item">Cliente, <code>{{entrega.cardName}}</code></li>
+              <li class="list-group-item">Dirección de entrega, <code>{{entrega.direccion}}</code></li>
             </ul>
           </div>
         </div>
@@ -39,12 +39,12 @@
               <tr  *ngFor="let item of entregaLineas | async;let i =index">
 
                 <td>{{i+1}}</td>
-                <td>{{item.Articulo}}</td>
-                <td style="word-wrap: break-word; width: 200px;font-size: 10px">{{item.Descripcion}}</td>
-                <td><span class="badge badge-default">{{item.Cantidad | number:'.0'}} </span></td>
-                <td><span class="badge badge-success">{{item.Entregado | number:'.0'}}</span></td>
-                <td><span class="badge badge-danger">{{item.Pendiente | number:'.0'}}</span></td>
-                <td><input [(ngModel)]="item.Asignado"  type="number" (focusout)="asignacionParcial(item);cantidad.disabled=true" [disabled]="!editable" class="col-lg-7" max="{{item.Pendiente}}" min="0"    #cantidad   ></td>
+                <td>{{item.articulo}}</td>
+                <td style="word-wrap: break-word; width: 200px;font-size: 10px">{{item.descripcion}}</td>
+                <td><span class="badge badge-default">{{item.cantidad | number:'.0'}} </span></td>
+                <td><span class="badge badge-success">{{item.entregado | number:'.0'}}</span></td>
+                <td><span class="badge badge-danger">{{item.pendiente | number:'.0'}}</span></td>
+                <td><input [(ngModel)]="item.asignado"  type="number" (focusout)="asignacionParcial(item);cantidad.disabled=true" [disabled]="!editable" class="col-lg-7" max="{{item.pendiente}}" min="0"    #cantidad   ></td>
               </tr>
               </tbody>
             </table>

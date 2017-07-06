@@ -43,7 +43,7 @@
         <tbody>
           <tr *ngFor="let item of this._tareaService.listar();let i =index;">
             <td>{{i+1}}</td>
-            <td>{{item.documento.DocNum}}</td>
+            <td>{{item.documento.docNum}}</td>
             <td style="text-align: center;width: 300px;">
               <p>
                 <button class="btn btn-sm btn-default"  (click)="collapse(elemento);this.isCollapse=!this.isCollapse">Detalle</button>
@@ -51,7 +51,7 @@
               <div class="collapse"  #elemento id="collapseExample">
                 <div class="card">
                   <ul class="list-group list-group-flush" *ngFor="let detalle of item.detalleTarea">
-                    <li class="list-group-item" style="word-wrap: break-word; width: 200px;font-size: 10px">{{detalle.Articulo}} / {{ detalle.Asignado | number:'.0'}}</li>
+                    <li class="list-group-item" style="word-wrap: break-word; width: 200px;font-size: 10px">{{detalle.articulo}} / {{ detalle.asignado | number:'.0'}}</li>
                   </ul>
                 </div>
               </div>

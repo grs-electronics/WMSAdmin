@@ -41,11 +41,12 @@
         </div>
         <ul class="list-group list-group-flush" *ngFor="let item of detalle">
           <li class="list-group-item list-group-item-action justify-content-between">
-            <h6>DocNum. {{item.DocNum}}</h6> -
-            <span class="badge badge-primary"> ETA. {{item.ETA}}</span> -
-            {{item.CardName}} -
-            <span class="badge badge-info badge-pill">{{item.Articulo}}</span> -
-            <span class="badge badge-default badge-pill">{{item.Cantidad | number:'.0'}}</span>
+            <h6>DocNum. {{item.docNum}}</h6> -
+            <span class="badge badge-primary"> ETA. {{item.eTA}}</span> -
+            <span class="badge badge-success">{{item.articulo}}</span> -
+            <span class="badge badge-warning">Contenedor. {{item.contenedor}}</span> -
+            <span class="badge badge-default badge-pill">Bod. {{item.bodega}}</span> -
+            <span class="badge badge-default badge-pill">{{item.cantidad | number:'.0'}} Unidades</span>
             <button (click)="eliminarTrabajo(item)" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
           </li>
         </ul>
