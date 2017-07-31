@@ -12,6 +12,7 @@ export class Entrada extends TipoDocumento{
   numFactura: string;
   comentarios: string;
   bodega:string;
+  solucion:string;
   constructor(){
     super('Entrada');
   }

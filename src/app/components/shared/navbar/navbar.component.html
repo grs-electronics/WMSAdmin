@@ -8,29 +8,19 @@
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['home']">Dashboard</a>
       </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['entrega']">Entrega</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['entrada']">Entrada</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['devolucion']">Devolución</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['inventario']">Inventario</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['tarea']">Tareas</a>
-      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Tarea
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Orden de Venta</a>
-          <a class="dropdown-item" href="#">Orden de Compra</a>
-          <a class="dropdown-item" href="#">Devolución</a>
+            <a  class="dropdown-item" [routerLink]="['tarea']">Historial de Trabajo</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" [routerLink]="['entrega']">Orden de Venta</a>
+            <a class="dropdown-item" [routerLink]="['entrada']">Orden de Compra</a>
+            <a class="dropdown-item" [routerLink]="['devolucion']">Devolución</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" [routerLink]="['inventario']">Inventario</a>
+            <a class="dropdown-item" [routerLink]="['inventario']">Transferencia de Stock</a>
         </div>
       </li>
     </ul>

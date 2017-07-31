@@ -47,5 +47,6 @@ export class EntradaComponent implements OnInit {
           //alert('declined');
         }
     });
+    this.detalleTarea=[];
   }
 }

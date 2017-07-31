@@ -30,7 +30,7 @@ export class DetalleTareaComponent extends DialogComponent<ConfirmModel, boolean
   }
 
   confirm() {
-    for( let index in this.detalle ){
+    /*for( let index in this.detalle ){
       this.tarea=new Tarea();
       this.tarea.detalleTarea=new Array<DetalleTarea>();
       this.tarea.detalleTarea.push(this.detalle[index]);
@@ -39,7 +39,15 @@ export class DetalleTareaComponent extends DialogComponent<ConfirmModel, boolean
       this.tarea.operario=this.operario;
       this.tarea.tipo='Entrada';
       this._tareaService.agregar(this.tarea).subscribe(data=>console.log(data));
-    }
+    }*/
+    this.tarea=new Tarea();
+    this.tarea.detalleTarea=this.detalle;
+    this.tarea.prioridad=this.prioridad;
+    this.tarea.duracion=this.tiempo;
+    this.tarea.operario=this.operario;
+    this.tarea.tipo='Entrada';
+    this._tareaService.agregar(this.tarea).subscribe(data=>console.log(data));
+    this.detalle=[];
     this.close();
   }
 
