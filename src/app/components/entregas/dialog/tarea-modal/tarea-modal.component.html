@@ -6,26 +6,39 @@
     </div>
     <div class="modal-body">
       <div class="card text-center">
-        <div class="card-header">
-          Información de Transporte
-        </div>
         <div class="card-block">
-          <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-id-card-o" aria-hidden="true"></i></span>
-            <input [(ngModel)]="transporte.dpi" class="form-control" type="text" placeholder="DPI" aria-describedby="basic-addon1" required>
+          <div class="row">
+            <div class="form-group col-md-4">
+              <label for="transporte">Transporte</label>
+              <select placeholder="Transporte.." id="transporte" #trans class="form-control form-control-sm" [(ngModel)]="transporte.transporte" (change)="obtenerPilotos(trans.options[trans.value-1].text)">
+                <option *ngFor="let item of listaTransporte" [value]="item.codigo">{{item.nombre}}</option>
+              </select>
+            </div>
+            <div class="form-group col-md-4" *ngIf="transporte.transporte">
+              <label for="pilotos">Piloto</label>
+              <select id="pilotos" class="form-control form-control-sm" [(ngModel)]="transporte.piloto" (change)="seleccionarPiloto(transporte.piloto)" >
+                <option *ngFor="let item of listaPilotos" [value]="item.piloto">{{item.piloto}}</option>
+              </select>
+            </div>
+            <div class="form-group col-md-4" *ngIf="transporte.tipoVehiculo">
+              <label for="pilotos">Vehículo</label>
+              <input type="text" class="disabled"  class="form-control form-control-sm" disabled [value]="transporte.tipoVehiculo+'/'+transporte.placas">
+            </div>
           </div>
-          <br>
-          <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-male" aria-hidden="true"></i></span>
-            <input [(ngModel)]="transporte.nombre" class="form-control" type="text" placeholder="Nombre" aria-describedby="basic-addon1" required>
-
+          <div class="row">
+            <div class="form-group col-md-4" >
+              <label for="pilotos">No. Guía</label>
+              <input type="number"  [(ngModel)]="numGuia" class="form-control form-control-sm text-center" >
+            </div>
+            <div class="form-group col-md-4" >
+              <label for="pilotos">Valor Guía</label>
+              <input type="number" [(ngModel)]="valorGuia" class="form-control form-control-sm text-center" >
+            </div>
+            <div class="form-group col-md-4" >
+              <label for="pilotos">Total Km Por Entrega</label>
+              <input [(ngModel)]="totalKilometraje" type="text"   class="form-control form-control-sm" >
+            </div>
           </div>
-          <br>
-          <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-truck" aria-hidden="true"></i></span>
-            <input [(ngModel)]="transporte.placas" class="form-control" type="text" placeholder="Placas" aria-describedby="basic-addon1" required>
-          </div>
-
         </div>
       </div>
       <hr>
@@ -34,6 +47,7 @@
           <tr>
             <th>#</th>
             <th>Documento</th>
+            <th>Kilometraje</th>
             <th>Cantidad/Artículos</th>
             <th>Tiempo/min.</th>
             <th>Prioridad</th>
@@ -44,6 +58,9 @@
           <tr *ngFor="let item of this._tareaService.listar();let i =index;">
             <td>{{i+1}}</td>
             <td>{{item.documento.docNum}}</td>
+            <td style="text-align: center;width: 60px;">
+              <input type="number" (focus)="kilometrajeIn(km.value)" (focusout)="kilometrajeOut(km.value)" #km [(ngModel)]="item.kilometraje" class="form-control form-control-sm text-center">
+            </td>
             <td style="text-align: center;width: 300px;">
               <p>
                 <button class="btn btn-sm btn-default"  (click)="collapse(elemento);this.isCollapse=!this.isCollapse">Detalle</button>
@@ -79,15 +96,15 @@
               <pre>{{item.prioridad}}</pre>
             </td>
             <td>
-              <button class="btn btn-sm btn-danger" (click)="this._tareaService.eliminar(item)"> <i class="fa fa-trash"></i></button>
+              <button class="btn btn-sm btn-danger" (click)="eliminarTarea(item)"> <i class="fa fa-trash"></i></button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-primary" (click)="confirm()">OK</button>
-      <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+      <button type="button" class="btn btn-primary btn-sm" (click)="confirm()">OK</button>
+      <button type="button" class="btn btn-default btn-sm" (click)="cancel()">Cancel</button>
     </div>
   </div>
 </div>

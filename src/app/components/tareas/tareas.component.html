@@ -18,6 +18,7 @@
     <tr>
       <th>#</th>
       <th>Tipo</th>
+      <th>No. Documento</th>
       <th>Encargado</th>
       <th>Transporte</th>
       <th>F/Asignada</th>
@@ -31,6 +32,7 @@
     <tr *ngFor="let item of listaTareas;let i=index  ">
       <td>{{i+1}}</td>
       <td>{{item.tipo}}</td>
+      <td>{{item.documento.docNum}}</td>
       <td>{{item.operario.name}}</td>
       <td>{{item.transporte.nombre}}/{{item.transporte.placas}}</td>
       <td>{{item.fechaAsignacion}}</td>

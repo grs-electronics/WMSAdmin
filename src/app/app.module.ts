@@ -16,6 +16,7 @@ import {EntregaService} from './services/entrega.service';
 import {OperarioService} from './services/operario.service';
 import {TareaService} from "./services/tarea.service";
 import {EntradaService} from './services/entrada.service';
+import {TransporteService} from './services/transporte.service';
 
 //Componentes
 import { AppComponent } from './app.component';
@@ -36,6 +37,7 @@ import {DetalleTareaModalComponent} from './components/tareas/dialog/detalle-tar
 import { TransporteComponent } from './components/transporte/transporte.component';
 import {CsvService} from "angular2-json2csv";
 import { DetalleTareaComponent } from './components/entradas/dialog/detalle-tarea/detalle-tarea.component';
+
 
 
 @NgModule({
@@ -78,7 +80,8 @@ import { DetalleTareaComponent } from './components/entradas/dialog/detalle-tare
     OperarioService,
     TareaService,
     CsvService,
-    EntradaService
+    EntradaService,
+    TransporteService
 ],
   bootstrap: [AppComponent]
 })

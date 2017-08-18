@@ -1,14 +1,16 @@
 <div class="login-page">
-  <div class="form">
-    <div class="login-form">
-      <img src="assets/img/logo.JPG" width="100px">
-      <hr>
-      <h2>WMS.<small>GRS<small>Electronics</small></small></h2>
-      <hr>
-      <input [(ngModel)]="user.username" type="text" placeholder="username"/>
-      <input [(ngModel)]="user.password" type="password" placeholder="password"/>
-      <button (click)="login(user)">login</button>
-      <p class="message">¡Recuerda! <a>No compartas tus credenciales</a></p>
+  <form (ngSubmit)="login(user)">
+    <div class="form">
+      <div class="login-form">
+        <img src="assets/img/logo.JPG" width="100px">
+        <hr>
+        <h2>WMS.<small>GRS<small>Electronics</small></small></h2>
+        <hr>
+        <input [(ngModel)]="user.username" name="username" ngModel type="text" placeholder="username"/>
+        <input [(ngModel)]="user.password" name="username" ngModel type="password" placeholder="password"/>
+        <button type="submit">login</button>
+        <p class="message">¡Recuerda! <a>No compartas tus credenciales</a></p>
+      </div>
     </div>
-  </div>
+  </form>
 </div>

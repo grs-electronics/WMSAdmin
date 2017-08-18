@@ -42,12 +42,27 @@ export class AuthService {
     this.isAuthenticated=false;
   }
 
+  userLogged(){
+    let usuario=window.localStorage.getItem('usuario');
+    return JSON.parse(usuario);
+  }
+
+  isAuthenticate(){
+    if(window.localStorage.getItem('access_token')===null){
+       return false;
+    }else{
+      return true;
+    }
+  }
+
   userInfo(){
     let headers = new Headers();
     headers.append('Authorization','Bearer '+window.localStorage.getItem('access_token'));
     this._http.get('/api/userinfo',{headers:headers}).subscribe((data)=>{
       if(data){
         this.userInformation=data.json();
+        console.log(data);
+        window.localStorage.setItem('usuario',JSON.stringify(data.json()));
       }
     });
     return this.userInformation;

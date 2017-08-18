@@ -6,6 +6,7 @@ import {EntradaComponent} from './components/entradas/entradas.component';
 import {EntregaComponent} from './components/entregas/entregas.component';
 import {InventarioComponent} from './components/inventario/inventario.component';
 import {TareaComponent} from './components/tareas/tareas.component';
+import {TransporteComponent} from './components/transporte/transporte.component';
 
 //Servicios
 import {AuthGuardService} from './services/auth-guard.service';
@@ -43,6 +44,11 @@ const APP_ROUTES: Routes = [
   {
     path: 'tarea',
     component: TareaComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'transporte',
+    component: TransporteComponent,
     canActivate: [AuthGuardService]
   },
   { path: '**', pathMatch: 'full', redirectTo: 'login' }

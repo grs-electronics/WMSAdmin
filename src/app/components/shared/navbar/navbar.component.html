@@ -1,4 +1,4 @@
-<nav *ngIf="auth.isAuthenticated" class="navbar navbar-toggleable-md navbar-light bg-faded">
+<nav *ngIf="auth.isAuthenticate()" class="navbar navbar-toggleable-md navbar-light bg-faded">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -9,7 +9,7 @@
         <a class="nav-link" [routerLink]="['home']">Dashboard</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Tarea
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -23,10 +23,13 @@
             <a class="dropdown-item" [routerLink]="['inventario']">Transferencia de Stock</a>
         </div>
       </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['transporte']">Transporte</a>
+      </li>
     </ul>
     <span class="navbar-text">
-      ¡Bienvenido {{auth.userInformation.username}}!
-      <button (click)="auth.logout()" class="btn btn-sm btn-outline-primary btn-margin" *ngIf="auth.isAuthenticated" >Logout</button>
+      ¡Bienvenido {{auth.userLogged().name}}!
+      <button (click)="auth.logout()" class="btn btn-sm btn-outline-primary btn-margin" >Logout</button>
     </span>
   </div>
 </nav>

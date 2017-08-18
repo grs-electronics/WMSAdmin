@@ -1,3 +1,237 @@
-<p>
-  transporte works!
-</p>
+<h3>Transporte <small>Gestión</small> <button (click)="mostrarForm=!mostrarForm" class="btn btn-sm btn-success pull-right"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></h3>
+<hr>
+<div class="container" *ngIf="mostrarForm">
+  <form (ngSubmit)="guardarDatos(forma)" #forma="ngForm">
+    <div class="form-group row">
+      <label for="inputPiloto3" class="col-sm-2 col-form-label">Piloto</label>
+      <div class="col-sm-6">
+        <input ngModel name="piloto" type="text" class="form-control form-control-sm" id="inputPiloto3" placeholder="Nombre Piloto">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">DPI</label>
+      <div class="col-sm-6">
+        <input ngModel name="dpi" type="number" class="form-control form-control-sm" id="inputPassword3" placeholder="DPI">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Teléfono</label>
+      <div class="col-sm-6">
+        <input ngModel name="telefono" type="number" class="form-control form-control-sm" id="inputPassword3" placeholder="Teléfono">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Tarifa</label>
+      <div class="col-sm-6">
+        <input ngModel name="tarifa" step="any" type="number" class="form-control form-control-sm" id="inputPassword3" placeholder="Tarifa Q.">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Placas</label>
+      <div class="col-sm-6">
+        <input ngModel name="placas" type="text" class="form-control form-control-sm" id="inputPassword3" placeholder="Placas de Vehículo">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Transporte</label>
+      <div class="col-sm-6">
+        <select ngModel class="form-control form-control-sm" name="transporte" placeholder="Transporte" placeholder="Selecciona Transporte" >
+          <option [value]="item.nombre" *ngFor="let item of listaTransportista">{{item.nombre}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Tipo Vehículo</label>
+      <div class="col-sm-6">
+        <select #tipo ngModel name="tipoVehiculo" class="form-control form-control-sm" id="inputPassword3" placeholder="Tipo Vehículo">
+          <option value="PICKUP">PICKUP</option>
+          <option value="CAMION">CAMION</option>
+          <option value="PROMEDIO">PROMEDIO</option>
+          <option value="CAMION FURGON">CAMION FURGON</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row" *ngIf="tipo.value==='CAMION FURGON'">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Placas Furgon</label>
+      <div class="col-sm-6">
+        <input ngModel name="placasFurgon" type="text" class="form-control form-control-sm" id="inputPassword3" placeholder="Placas de Furgon">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Altura</label>
+      <div class="col-sm-6">
+        <input ngModel name="altura" step="any" type="number" class="form-control form-control-sm" id="inputPassword3" placeholder="Altura">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Ancho</label>
+      <div class="col-sm-6">
+        <input ngModel name="ancho" step="any" type="number" class="form-control form-control-sm" id="inputPassword3" placeholder="Ancho">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Largo</label>
+      <div class="col-sm-6">
+        <input ngModel name="largo" step="any" type="number" class="form-control form-control-sm" id="inputPassword3" placeholder="Largo">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Altura Suelo/furgón</label>
+      <div class="col-sm-6">
+        <input ngModel name="alturaFurgon" step="any" type="number" class="form-control form-control-sm" id="inputPassword3" placeholder="Altura Suelo a piso de furgón">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="offset-sm-2 col-sm-10">
+        <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
+        <button (click)="mostrarForm=!mostrarForm" type="submit" class="btn btn-secondary btn-sm">Cancelar</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="container" *ngIf="mostrarForm2">
+  <form (ngSubmit)="editar(forma)" #forma="ngForm" >
+    <div class="form-group row">
+      <label for="inputPiloto3" class="col-sm-2 col-form-label">Piloto</label>
+      <div class="col-sm-6">
+        <input [(ngModel)]="transporte.piloto" name="piloto" type="text" class="form-control form-control-sm" id="inputPiloto3" placeholder="Nombre Piloto">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">DPI</label>
+      <div class="col-sm-6">
+        <input [(ngModel)]="transporte.dpi" name="dpi" type="number" class="form-control form-control-sm" id="inputPassword3" placeholder="DPI">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Teléfono</label>
+      <div class="col-sm-6">
+        <input [(ngModel)]="transporte.telefono" name="telefono" type="number" class="form-control form-control-sm" id="inputPassword3" placeholder="Teléfono">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Tarifa</label>
+      <div class="col-sm-6">
+        <input [(ngModel)]="transporte.tarifa" name="tarifa" step="any" type="number" class="form-control form-control-sm" id="inputPassword3" placeholder="Tarifa Q.">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Placas</label>
+      <div class="col-sm-6">
+        <input [(ngModel)]="transporte.placas" name="placas" type="text" class="form-control form-control-sm" id="inputPassword3" placeholder="Placas de Vehículo">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Transporte</label>
+      <div class="col-sm-6">
+        <select [(ngModel)]="transporte.transporte" class="form-control form-control-sm" name="transporte" placeholder="Transporte" placeholder="Selecciona Transporte" >
+          <option [value]="item.nombre" *ngFor="let item of listaTransportista">{{item.nombre}}</option>
+        </select>
+
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Tipo Vehículo</label>
+      <div class="col-sm-6">
+        <select #tipo [(ngModel)]="transporte.tipoVehiculo" name="tipoVehiculo" class="form-control form-control-sm" id="inputPassword3" placeholder="Tipo Vehículo">
+          <option value="PICKUP">PICKUP</option>
+          <option value="CAMION">CAMION</option>
+          <option value="PROMEDIO">PROMEDIO</option>
+          <option value="CAMION FURGON">CAMION FURGON</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row" *ngIf="tipo.value==='CAMION FURGON'">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Placas Furgon</label>
+      <div class="col-sm-6">
+        <input [(ngModel)]="transporte.placasFurgon" name="placasFurgon" type="text" class="form-control form-control-sm" id="inputPassword3" placeholder="Placas de Furgon">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Altura</label>
+      <div class="col-sm-6">
+        <input ngModel name="altura" step="any" type="number" class="form-control form-control-sm" id="inputPassword3" placeholder="Altura">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Ancho</label>
+      <div class="col-sm-6">
+        <input [(ngModel)]="transporte.ancho" name="ancho" step="any" type="number" class="form-control form-control-sm" id="inputPassword3" placeholder="Ancho">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Largo</label>
+      <div class="col-sm-6">
+        <input [(ngModel)]="transporte.largo" name="largo" step="any" type="number" class="form-control form-control-sm" id="inputPassword3" placeholder="Largo">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Altura Suelo/furgón</label>
+      <div class="col-sm-6">
+        <input [(ngModel)]="transporte.alturaFurgon" name="alturaFurgon" step="any" type="number" class="form-control form-control-sm" id="inputPassword3" placeholder="Altura Suelo a piso de furgón">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Volumen</label>
+      <div class="col-sm-6">
+        <input [value]="transporte.altura*transporte.ancho*transporte.largo | number:'.0'" name="volumen" step="any" disabled type="number" class="form-control form-control-sm" id="inputPassword3" placeholder="Volumen">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="offset-sm-2 col-sm-10">
+        <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
+        <button (click)="mostrarForm2=!mostrarForm2" class="btn btn-secondary btn-sm">Cancelar</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<hr>
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Transporte</th>
+        <th>Piloto</th>
+        <th>DPI</th>
+        <th>Placas</th>
+        <th>Tipo Vehiculo</th>
+        <th>Placas Furgon</th>
+        <th>Teléfono</th>
+        <th>Altura</th>
+        <th>Ancho</th>
+        <th>Largo</th>
+        <th>Altura Furgon</th>
+        <th>Tarifa</th>
+        <th>Volumen</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transporte of this.listaTransporte;let i=index">
+        <td>{{i+1}}</td>
+        <td>{{transporte.transporte}}</td>
+        <td>{{transporte.piloto}}</td>
+        <td>{{transporte.dpi}}</td>
+        <td>{{transporte.placas}}</td>
+        <td>{{transporte.tipoVehiculo}}</td>
+        <td *ngIf="transporte.tipoVehiculo==='CAMION FURGON'">{{transporte.placasFurgon}}</td>
+        <td *ngIf="transporte.tipoVehiculo!=='CAMION FURGON'">---</td>
+        <td>{{transporte.telefono}}</td>
+        <td>{{transporte.altura}}</td>
+        <td>{{transporte.ancho}}</td>
+        <td>{{transporte.largo}}</td>
+        <td>{{transporte.alturaFurgon}}</td>
+        <td>{{transporte.tarifa}}</td>
+        <td>{{(transporte.altura*transporte.ancho*transporte.largo) | number:'.1'}}</td>
+        <td >
+          <div class="btn-group inline pull-left" data-toggle="buttons-checkbox">
+            <button (click)="cargarEditar(transporte);mostrarForm2=!mostrarForm2;" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+            <button (click)="eliminar(transporte)" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+</table>

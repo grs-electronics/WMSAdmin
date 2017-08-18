@@ -21,5 +21,9 @@ export class Tarea {
   duracion:string='30';
   transporte:Transporte;
   solucionTarea:Array<SolucionTarea>=new Array<SolucionTarea>();
+  numGuia:string;
+  valorGuia:string;
+  kilometraje:string;
+  comodin:number;
   constructor(){}
 }
