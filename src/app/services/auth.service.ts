@@ -20,6 +20,7 @@ export class AuthService {
         this._http.post('/oauth/token', creds, {headers:
         headers}).subscribe((data) => {
             if(data) {
+
                 window.localStorage.setItem('access_token',
                   data.json().access_token);
                 window.localStorage.setItem('expires_in',
@@ -28,6 +29,7 @@ export class AuthService {
                   data.json().refresh_token);
                 window.localStorage.setItem('token_type',
                   data.json().token_type);
+                  this.userInfo()
                 this.isAuthenticated=true;
               }
                 resolve(this.isAuthenticated);
@@ -61,7 +63,6 @@ export class AuthService {
     this._http.get('/api/userinfo',{headers:headers}).subscribe((data)=>{
       if(data){
         this.userInformation=data.json();
-        console.log(data);
         window.localStorage.setItem('usuario',JSON.stringify(data.json()));
       }
     });

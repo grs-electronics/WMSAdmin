@@ -6,13 +6,24 @@ import {AuthService} from '../../../services/auth.service';
   templateUrl: './navbar.component.html'
 })
 export class NavbarComponent implements OnInit {
-  constructor(private auth:AuthService,private _router:Router) { }
+  usuario:Object;
+  constructor(private auth:AuthService,private _router:Router) {
+
+  }
   ngOnInit() {
     if(this.auth.isAuthenticate){
       this._router.navigate(['/home']);
+      if(window.localStorage.getItem('usuario')==null){
+        window.location.reload();
+      }
     }else{
       this._router.navigate(['/login']);
     }
+  }
+
+  userLogged(){
+    let usuario=window.localStorage.getItem('usuario');
+    return JSON.parse(usuario);
   }
 
 }

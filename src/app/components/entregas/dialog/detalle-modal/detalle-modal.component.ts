@@ -52,11 +52,10 @@ export class DetalleModalComponent  extends DialogComponent<ConfirmModel, boolea
         for(let detTarea of this.listaAsignacion){
           for(let miTarea of this._tareaService.listar()){
             if(this.tarea.documento.docNum==miTarea.documento.docNum){
+              asignable=true;
               if(miTarea.detalleTarea){
                 for(let detalle of miTarea.detalleTarea){
                   if(detTarea.articulo===detalle.articulo){
-                    asignable=true;
-                    console.log(detalle.cantidad,Number(detalle.asignado)+Number(detTarea.asignado))
                     if(Number(detalle.cantidad)>=Number(detalle.asignado)+Number(detTarea.asignado)){
                       console.log("Se puede asginar");
                       this.tarea.detalleTarea=this.listaAsignacion;
@@ -71,10 +70,8 @@ export class DetalleModalComponent  extends DialogComponent<ConfirmModel, boolea
           }
         }
       }
-      if(asignable==false){
-        this._tareaService.agregarALista(this.tarea);
-      }
-      if(this._tareaService.listar().length<=0){
+
+      if(!asignable){
         this.tarea.detalleTarea=this.listaAsignacion;
         this._tareaService.agregarALista(this.tarea);
       }
@@ -90,7 +87,6 @@ export class DetalleModalComponent  extends DialogComponent<ConfirmModel, boolea
                 if(miTarea.detalleTarea){
                   for(let detalle of miTarea.detalleTarea){
                     if(detTarea.articulo===detalle.articulo){
-                      console.log(detalle.cantidad,Number(detalle.asignado)+Number(detTarea.asignado))
                       if(Number(detalle.cantidad)>=Number(detalle.asignado)+Number(detTarea.asignado)){
                         console.log("Se puede asginar");
                         this.tarea.detalleTarea=value;

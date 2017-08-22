@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
       let userLogin=this._auth.login(usercreds);
       userLogin.then((res)=>{
         if(res){
-          this._auth.userInfo();
           this._router.navigate(['/home']);
         }
       });
